@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let shoppingList = [];
+
+      function addGoods(list, item) {
+        list.push(item);
+        return list;
+      }
+
+      function deleteGoods(list, item) {
+        const index = list.indexOf(item);
+        if (index !== -1) {
+          list.splice(index, 1);
+        } else {
+          alert("Товар не знайдено.");
+        }
+        return list;
+      }
+
+      function printList(list) {
+        if (list.length === 0) {
+          alert("Список покупок порожній.");
+        } else {
+          //alert("Ваш список покупок:");
+          for (let i = 0; i < list.length; i++) {
+           alert(`${i + 1}. ${list[i]}`);
+          }
+        }
+      }
+
+      let shouldContinue = true;
+
+      while (shouldContinue) {
+        const action = prompt(
+          "Оберіть дію:\n1. Додати товар\n2. Видалити товар\n3. Показати список\n0. Вийти"
+        );
+
+        switch (action) {
+          case "1":
+            const newGood = prompt("Введіть назву товару:");
+            shoppingList = addGoods(shoppingList, newGood);
+            break;
+          case "2":
+            const goodToDelete = prompt("Введіть назву товару для видалення:");
+            shoppingList = deleteGoods(shoppingList, goodToDelete);
+            break;
+          case "3":
+            printList(shoppingList);
+            break;
+          case "0":
+            shouldContinue = false;
+            break;
+          default:
+            alert("Невірний ввід.");
+        }
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let arrayOfMarks = [];
+      function collectMarks() {
+        let shouldContinue = true;
+
+        while (shouldContinue) {
+          let mark = Number(
+            prompt(
+              "Введіть оцінку студента (від 0 до 100, або напишіть 'все' для завершення): "
+            )
+          );
+          if (!isNaN(mark) && mark >= 0 && mark <= 100) {
+            arrayOfMarks.push(mark);
+          } else if (isNaN(mark)) {
+            shouldContinue = false;
+          } else {
+            alert("Введіть число від 0 до 100.");
+          }
+        }
+
+        return arrayOfMarks;
+      }
+
+      arrayOfMarks = collectMarks();
+
+      function getAverageMark(arrayOfMarks) {
+        let sumOfMark = 0;
+        for (let index = 0; index < arrayOfMarks.length; index++) {
+          sumOfMark += arrayOfMarks[index];
+        }
+        let averageOfMark = sumOfMark / arrayOfMarks.length;
+        return averageOfMark;
+      }
+
+      function getMaxMark(arrayOfMarks) {
+        let max = arrayOfMarks[0];
+        for (let index = 0; index < arrayOfMarks.length; index++) {
+          if (arrayOfMarks[index] > max) {
+            max = arrayOfMarks[index];
+          }
+        }
+        return max;
+      }
+
+      function getMinMark(arrayOfMarks) {
+        let min = arrayOfMarks[0];
+        for (let index = 0; index < arrayOfMarks.length; index++) {
+          if (arrayOfMarks[index] < min) {
+            min = arrayOfMarks[index];
+          }
+        }
+        return min;
+      }
+
+      let averageMark = getAverageMark(arrayOfMarks);
+      let maxMark = getMaxMark(arrayOfMarks);
+      let minMark = getMinMark(arrayOfMarks);
+
+      alert(
+        "Середня оцінка: " +
+          averageMark.toFixed(2) +
+          " Найвища оцінка: " +
+          maxMark +
+          " Найнижча оцінка: " +
+          minMark
+      );
+    </script>
+  </body>
+</html>
