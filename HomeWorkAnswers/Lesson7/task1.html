@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+class Student {
+  constructor(name, surname, age, id, averageGrade) {
+    this.name = name;
+    this.surname = surname;
+    this.age = age;
+    this.id = id;
+    this.averageGrade = averageGrade;
+  }
+}
+
+const students = [];
+
+function addStudent(student) {
+  students.push(student);
+}
+
+function removeStudentById(id) {
+  students = students.filter(student => student.id !== id);
+}
+
+function getAllStudents() {
+  return students;
+}
+
+function findStudentById(id) {
+  return students.find(student => student.id === id);
+}
+
+
+    </script>
+</body>
+</html>
